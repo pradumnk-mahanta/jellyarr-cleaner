@@ -6,7 +6,7 @@
     "overview": "Automatically triggers media removals and unmonitoring in Radarr/Sonarr when media is deleted from Jellyfin.",
     "owner": "pradumnk-mahanta",
     "category": "General",
-    "imageUrl": "https://raw.githubusercontent.com/pradumnk-mahanta/jellyarr-cleaner/main/logo.svg",
+    "imageUrl": "https://raw.githubusercontent.com/pradumnk-mahanta/jellyarr-cleaner/main/logo.png",
     "versions": [
       {
         "version": "0.0.1.0",
