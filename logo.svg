@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1333" />
+      <stop offset="100%" stop-color="#0B0914" />
+    </linearGradient>
+
+    <!-- Jellyfin Violet to Arr Cyan Gradient -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#AA5CC8" />
+      <stop offset="50%" stop-color="#00A4DC" />
+      <stop offset="100%" stop-color="#00D2C4" />
+    </linearGradient>
+
+    <!-- Trash / Canister Gradient -->
+    <linearGradient id="canisterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D2250" />
+      <stop offset="100%" stop-color="#18122B" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded Background Shield -->
+  <rect width="512" height="512" rx="110" fill="url(#bgGrad)" />
+
+  <!-- Outer Ambient Glow Ring -->
+  <circle cx="256" cy="256" r="195" fill="none" stroke="url(#accentGrad)" stroke-width="6" opacity="0.35" stroke-dasharray="16 10" />
+
+  <!-- Center Canister Base -->
+  <rect x="166" y="210" width="180" height="200" rx="30" fill="url(#canisterGrad)" stroke="url(#accentGrad)" stroke-width="8" />
+
+  <!-- Canister Ribs -->
+  <line x1="216" y1="260" x2="216" y2="360" stroke="#AA5CC8" stroke-width="7" stroke-linecap="round" opacity="0.75" />
+  <line x1="256" y1="260" x2="256" y2="360" stroke="#00A4DC" stroke-width="7" stroke-linecap="round" opacity="0.9" />
+  <line x1="296" y1="260" x2="296" y2="360" stroke="#00D2C4" stroke-width="7" stroke-linecap="round" opacity="0.75" />
+
+  <!-- Canister Lid -->
+  <rect x="146" y="175" width="220" height="22" rx="11" fill="url(#accentGrad)" />
+  <path d="M226 175 C226 150, 286 150, 286 175" fill="none" stroke="url(#accentGrad)" stroke-width="8" stroke-linecap="round" />
+
+  <!-- Dynamic Sync / Sweep Arrow (Orbiting Top-Right) -->
+  <path d="M 370 180 A 155 155 0 0 0 160 120" fill="none" stroke="url(#accentGrad)" stroke-width="12" stroke-linecap="round" />
+  <polygon points="140,122 170,105 168,140" fill="#AA5CC8" />
+
+  <!-- Dynamic Sync / Sweep Arrow (Orbiting Bottom-Left) -->
+  <path d="M 142 332 A 155 155 0 0 0 352 392" fill="none" stroke="url(#accentGrad)" stroke-width="12" stroke-linecap="round" />
+  <polygon points="372,390 342,407 344,372" fill="#00D2C4" />
+
+  <!-- Sparkle Particle -->
+  <path d="M 380 110 Q 380 130 400 130 Q 380 130 380 150 Q 380 130 360 130 Q 380 130 380 110 Z" fill="#00D2C4" opacity="0.8" />
+</svg>

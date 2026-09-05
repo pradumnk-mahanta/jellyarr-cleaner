@@ -1,0 +1,12 @@
+[
+  {
+    "guid": "e2b1096a-79b8-4665-b778-90f7d5402a39",
+    "name": "JellyArr Cleaner",
+    "description": "Synchronizes Movie and Series deletions in Jellyfin with Radarr and Sonarr.",
+    "overview": "Automatically triggers media removals and unmonitoring in Radarr/Sonarr when media is deleted from Jellyfin.",
+    "owner": "pradumnk-mahanta",
+    "category": "General",
+    "imageUrl": "https://raw.githubusercontent.com/pradumnk-mahanta/Jellyfin.Plugin.JellyArrCleaner/main/logo.svg",
+    "versions": []
+  }
+]
