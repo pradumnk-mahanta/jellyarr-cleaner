@@ -71,7 +71,7 @@ jobs:
             cp bin/Release/net9.0/Jellyfin.Plugin.JellyArrCleaner.deps.json staging/
           fi
           cp meta.json staging/
-          cp logo.svg staging/
+          cp logo.png staging/
 
           cd staging
           zip -r ../JellyArrCleaner.zip .
@@ -97,7 +97,7 @@ jobs:
           checksum = "${{ steps.package.outputs.MD5 }}"
           repo = "${{ github.repository }}"
           download_url = f"https://github.com/{repo}/releases/download/{tag}/JellyArrCleaner.zip"
-          logo_url = f"https://raw.githubusercontent.com/{repo}/main/logo.svg"
+          logo_url = f"https://raw.githubusercontent.com/{repo}/main/logo.png"
 
           manifest_path = "manifest.json"
           if os.path.exists(manifest_path):
