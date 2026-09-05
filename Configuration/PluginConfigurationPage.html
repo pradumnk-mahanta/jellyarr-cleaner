@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JellyArr Cleaner</title>
+</head>
+<body>
+    <div id="JellyArrCleanerConfigPage" data-role="page" class="page type-interior pluginConfigurationPage" data-require="emby-input,emby-button,emby-select">
+        <div data-role="content">
+            <div class="content-primary">
+                <h1>JellyArr Cleaner Settings</h1>
+                <p>Synchronize movie and whole-series deletions with Radarr and Sonarr.</p>
+
+                <form id="JellyArrCleanerConfigForm">
+                    
+                    <h2>Radarr (Movies)</h2>
+                    <div class="inputContainer">
+                        <label class="inputLabel inputLabelUnfocused" for="RadarrUrl">Radarr Base URL</label>
+                        <input id="RadarrUrl" name="RadarrUrl" type="text" is="emby-input" required />
+                        <div class="fieldDescription">e.g., http://radarr:7878</div>
+                    </div>
+
+                    <div class="inputContainer">
+                        <label class="inputLabel inputLabelUnfocused" for="RadarrApiKey">Radarr API Key</label>
+                        <input id="RadarrApiKey" name="RadarrApiKey" type="password" is="emby-input" />
+                    </div>
+
+                    <div class="selectContainer">
+                        <label class="selectLabel" for="MovieBehavior">Movie Deletion Action</label>
+                        <select is="emby-select" id="MovieBehavior" name="MovieBehavior">
+                            <option value="DeleteFileOnly">Delete Movie File Only</option>
+                            <option value="DeleteAndRemoveMovie">Delete &amp; Remove Movie</option>
+                        </select>
+                        <div class="fieldDescription">"Delete &amp; Remove" completely purges the movie entry from Radarr.</div>
+                    </div>
+
+                    <br />
+                    <h2>Sonarr (Series)</h2>
+                    <div class="inputContainer">
+                        <label class="inputLabel inputLabelUnfocused" for="SonarrUrl">Sonarr Base URL</label>
+                        <input id="SonarrUrl" name="SonarrUrl" type="text" is="emby-input" required />
+                        <div class="fieldDescription">e.g., http://sonarr:8989</div>
+                    </div>
+
+                    <div class="inputContainer">
+                        <label class="inputLabel inputLabelUnfocused" for="SonarrApiKey">Sonarr API Key</label>
+                        <input id="SonarrApiKey" name="SonarrApiKey" type="password" is="emby-input" />
+                    </div>
+
+                    <div class="selectContainer">
+                        <label class="selectLabel" for="SeriesBehavior">Series Deletion Action</label>
+                        <select is="emby-select" id="SeriesBehavior" name="SeriesBehavior">
+                            <option value="DeleteFilesOnly">Delete Files Only</option>
+                            <option value="DeleteAndRemoveShow">Delete &amp; Remove Show</option>
+                        </select>
+                        <div class="fieldDescription">"Delete &amp; Remove" completely purges the show entry from Sonarr.</div>
+                    </div>
+
+                    <br />
+                    <div>
+                        <button is="emby-button" type="submit" class="raised button-submit block">
+                            <span>Save</span>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            const pluginId = "e2b1096a-79b8-4665-b778-90f7d5402a39";
+
+            document.querySelector('#JellyArrCleanerConfigPage').addEventListener('pageshow', function () {
+                Dashboard.showLoadingMsg();
+                ApiClient.getPluginConfiguration(pluginId).then(function (config) {
+                    document.querySelector('#RadarrUrl').value = config.RadarrUrl || '';
+                    document.querySelector('#RadarrApiKey').value = config.RadarrApiKey || '';
+                    document.querySelector('#MovieBehavior').value = config.MovieBehavior || 'DeleteAndRemoveMovie';
+
+                    document.querySelector('#SonarrUrl').value = config.SonarrUrl || '';
+                    document.querySelector('#SonarrApiKey').value = config.SonarrApiKey || '';
+                    document.querySelector('#SeriesBehavior').value = config.SeriesBehavior || 'DeleteAndRemoveShow';
+
+                    Dashboard.hideLoadingMsg();
+                });
+            });
+
+            document.querySelector('#JellyArrCleanerConfigForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                Dashboard.showLoadingMsg();
+
+                ApiClient.getPluginConfiguration(pluginId).then(function (config) {
+                    config.RadarrUrl = document.querySelector('#RadarrUrl').value;
+                    config.RadarrApiKey = document.querySelector('#RadarrApiKey').value;
+                    config.MovieBehavior = document.querySelector('#MovieBehavior').value;
+
+                    config.SonarrUrl = document.querySelector('#SonarrUrl').value;
+                    config.SonarrApiKey = document.querySelector('#SonarrApiKey').value;
+                    config.SeriesBehavior = document.querySelector('#SeriesBehavior').value;
+
+                    ApiClient.updatePluginConfiguration(pluginId, config).then(function (result) {
+                        Dashboard.processPluginConfigurationUpdateResult(result);
+                    });
+                });
+
+                return false;
+            });
+        </script>
+    </div>
+</body>
+</html>
