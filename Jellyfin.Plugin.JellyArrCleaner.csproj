@@ -1,7 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>Jellyfin.Plugin.JellyArrCleaner</RootNamespace>
     <AssemblyName>Jellyfin.Plugin.JellyArrCleaner</AssemblyName>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -12,6 +13,8 @@
   <ItemGroup>
     <PackageReference Include="Jellyfin.Controller" Version="10.11.*" />
     <PackageReference Include="Jellyfin.Model" Version="10.11.*" />
+    <PackageReference Include="Jellyfin.Controller" Version="12.0.*" />
+    <PackageReference Include="Jellyfin.Model" Version="12.0.*" />
   </ItemGroup>
 
   <ItemGroup>
